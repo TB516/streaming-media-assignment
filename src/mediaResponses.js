@@ -11,7 +11,7 @@ const getMedia = (request, response, fileName, mediaType) => {
       return response.end(error);
     }
 
-    const { range } = request.headers ? request.headers : 'bytes=0-';
+    const { range } = request.headers.range ? request.headers : { range: 'bytes=0-' };
 
     const positions = range.replace(/bytes=/, '').split('-');
 
